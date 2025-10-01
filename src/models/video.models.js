@@ -2,19 +2,19 @@ import mongoose,{Schema} from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 const videoSchema = new Schema({
     videoFile:{//cloudnary
-        type:Strig,
+        type:String,
         required:true
     },
     thumbnail:{//cloudnary
-        type:Strig,
+        type:String,
         required:true
     },
     title:{
-        type:Strig,
+        type:String,
         required:true
     },
     description:{
-        type:Strig,
+        type:String,
         required:true
     },
     duration:{
