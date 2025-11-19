@@ -23,7 +23,7 @@ const userSchema = new Schema({
         required:true,
         trim:true
     },
-    avatar:{
+    0 :{
         type:String,//claudinary url
         required:true
     },
