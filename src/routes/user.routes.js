@@ -1,5 +1,17 @@
 import  { Router } from 'express';
-import { loginUser, logoutUser, registerUser , refreshAccessToken } from '../controllers/user.controller.js';
+import { 
+    loginUser,
+     logoutUser,
+      registerUser ,
+       refreshAccessToken,
+        changeCurrentPassword,
+         getCurrentUser,
+          updateAccountDetails,
+           updateUserAvatar,
+            updateUserCoverImage,
+             getWatchHistory
+             }
+             from '../controllers/user.controller.js';
 import { upload } from '../middlewares/multer.middleware.js';
 import { verifyJWT } from '../middlewares/auth.middleware.js';
 const router = Router();
@@ -21,5 +33,12 @@ router.route('/login').post(loginUser);
 // secured routes
 router.route('/logout').post(verifyJWT, logoutUser);
 router.route('/refresh-token').post(refreshAccessToken); // handled in user.controller.js
+router.route("/change-password").post(verifyJWT,changeCurrentPassword); 
+router.route("/current-user").get(verifyJWT, getCurrentUser);
+router.route("/update-account").patch(verifyJWT,updateAccountDetails)
+router.route("/update-avatar").patch(verifyJWT, upload.single('avatar'), updateUserAvatar);
+router.route("/coverImage").patch(verifyJWT, upload.single('coverImage'), updateUserCoverImage);
+router.route("/c/:username").get(verifyJWT,getCurrentUser); // get channel profile by username
+router.route("/watch-history").get(verifyJWT,getWatchHistory); // get watch history of current user
 
 export default router;
